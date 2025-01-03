@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display Time</title>
+</head>
+<body>
+    <!-- Basic digital clock -->
+    <div id="digitalClock"></div>
+
+    <!-- Display current date and time -->
+    <div id="fullDateTime"></div>
+
+    <script>
+        // Function to update the digital clock
+        function updateDigitalClock() {
+            const clock = document.getElementById('digitalClock');
+            const now = new Date();
+            
+            // Format time as HH:MM:SS
+            const time = now.toLocaleTimeString();
+            clock.innerHTML = `Current Time: ${time}`;
+        }
+
+        // Function to display full date and time
+        function updateFullDateTime() {
+            const dateTimeDiv = document.getElementById('fullDateTime');
+            const now = new Date();
+            
+            // Format date and time
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
+            
+            const dateTimeStr = now.toLocaleString(undefined, options);
+            dateTimeDiv.innerHTML = `<br>Full Date and Time: ${dateTimeStr}`;
+        }
+
+        // Update the clock every second
+        setInterval(updateDigitalClock, 1000);
+        setInterval(updateFullDateTime, 1000);
+
+        // Initial call to display time immediately
+        updateDigitalClock();
+        updateFullDateTime();
+    </script>
+</body>
+</html>
